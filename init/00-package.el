@@ -16,9 +16,7 @@
 	     :config
 	     (global-company-mode))
 
-;;
 (use-package avy)
 (use-package helm)
 (use-package helm-swoop)
 (use-package magit)
-(use-package isearch)
