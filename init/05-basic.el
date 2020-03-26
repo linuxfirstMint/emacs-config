@@ -24,6 +24,10 @@
 ;; hide meny and tool bar
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(scroll-bar-mode 0)
 
 ;; highlight corresponding parentheses
 (show-paren-mode t)
+
+;; make the "yes or no" selection "y or n"
+(fset 'yes-or-no-p 'y-or-n-p)

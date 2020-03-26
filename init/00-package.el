@@ -30,3 +30,7 @@
 (use-package helm)
 (use-package helm-swoop)
 (use-package magit)
+(use-package which-key
+  :config
+  (which-key-setup-side-window-bottom)
+  (which-key-mode t))

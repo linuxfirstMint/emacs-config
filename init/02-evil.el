@@ -48,7 +48,6 @@
     "q" 'kill-buffer-and-window
     "r" 'helm-recentf
     "s" 'helm-swoop
-    "t" 'treemacs
     "w" 'other-window
     "x" 'helm-M-x
     "/" 'split-window-right

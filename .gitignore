@@ -1,0 +1,12 @@
+##
+## git ignore
+##
+
+*
+/auto-save-list/
+/recentf       
+/straight/    
+/transient/
+!/init/
+!/init.el
+!/.gitignore    
