@@ -2,9 +2,6 @@
 ;; evil settings
 ;;
 
-;(use-package evil
-;	:init
-;	(evil-mode t))
 (use-package evil
   :config
   ;; before (evil-mode 1)
@@ -39,6 +36,7 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "SPC")
   (evil-leader/set-key
+    "0" 'delete-window
     "SPC" 'evil-buffer
     ":" 'shell-command
     "a" 'avy-goto-word-0
@@ -46,13 +44,16 @@
     "d" 'kill-this-buffer
     "f" 'helm-find-files
     "g" 'magit-status
-    "h" 'evil-search-highlight-persist-remove-all
     "k" 'kill-buffer
     "q" 'kill-buffer-and-window
     "r" 'helm-recentf
     "s" 'helm-swoop
+    "t" 'treemacs
     "w" 'other-window
     "x" 'helm-M-x
+    "/" 'split-window-right
+    "-" 'split-window-below
+    "R" 'eval-buffer
     ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

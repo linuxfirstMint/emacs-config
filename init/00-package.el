@@ -2,20 +2,30 @@
 ;; package settings
 ;;
 
-;; company
+;; company-mode
 (use-package company
-	     :init
-	     (setq company-selection-wrap-around t)
+             :ensure t
+             :demand
 	     :bind
-	     (:map company-active-map
+	     (("<tab>" . company-indent-or-complete-common)
+	       :map company-active-map
 		("M-n" . nil)
 		("M-p" . nil)
 		("C-n" . company-select-next)
 		("C-p" . company-select-previous)
 		("C-h" . nil))
 	     :config
-	     (global-company-mode))
-
+	     (global-company-mode)
+	     (setq company-idle-delay 0)
+	     (setq company-selection-wrap t)
+	     (setq completion-ignore-case t)
+	     (setq company-dabbrev-downcase nil)
+	     (setq company-backends '((company-capf company-dabbrev)
+				      company-semantic
+				      company-files
+				      (company-dabbrev-code company-gtags
+							    company-etags company-keywords)
+				      )))
 (use-package avy)
 (use-package helm)
 (use-package helm-swoop)
