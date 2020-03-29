@@ -2,7 +2,6 @@
 ;; package settings
 ;;
 
-;; company-mode
 (use-package company
              :ensure t
              :demand
@@ -49,7 +48,10 @@
   :config
   (xclip-mode t))
 
+(use-package magit
+  :config
+  (magit-auto-revert-mode t))
+
 (use-package avy)
 (use-package helm)
 (use-package helm-swoop)
-(use-package magit)

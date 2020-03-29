@@ -31,3 +31,6 @@
 
 ;; make the "yes or no" selection "y or n"
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; automatically updates emacs buffer when files are updated outside emacs
+(global-auto-revert-mode t)
