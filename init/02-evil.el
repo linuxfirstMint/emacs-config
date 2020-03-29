@@ -4,13 +4,9 @@
 
 (use-package evil
   :config
-  ;; before (evil-mode 1)
   (setq evil-cross-lines t)           ;行の端でhlしたとき前/次の行に移動する
   (setq evil-want-C-i-jump nil)       ;C-iはTABとして使う
-  (setq evil-search-module 'isearch)  ;searchはemacs風
-  ;; (evil-ex-search-vim-style-regexp t) ;serch-moduleがevil-searchの場合に有効化
-  ;; /before (evil-mode 1)
-  (evil-mode 1)
+  (setq evil-search-module 'helm-swoop) 
   ;;cursor-color
   (setq evil-emacs-state-cursor    '("#E74C3C" box))
   (setq evil-normal-state-cursor   '("#2ECC71" box))
@@ -22,38 +18,40 @@
   (setq evil-want-fine-undo t)     ;操作を元に戻す単位を細かくする
   (setq evil-move-cursor-back nil) ;改行文字の上に移動可能にする(C-x C-e用)
   (setq evil-esc-delay 0)
+  ;(use-package evil-matsearch-matcht
+    ;; press "%" to jump between tag pair
+    ;:config
+    ;(global-evil-matchit-mode t))
+  (use-package evil-leader
+    :config
+    ;; evil leader
+    (setq evil-leader/in-all-states 1)
+    (global-evil-leader-mode t)
+    (evil-leader/set-leader "SPC")
+    (evil-leader/set-key
+      "0" 'delete-window
+      "SPC" 'evil-buffer
+      ":" 'shell-command
+      "a" 'avy-goto-word-0
+      "b" 'buffer-menu
+      "c" 'org-capture
+      "d" 'kill-this-buffer
+      "f" 'helm-find-files
+      "g" 'magit-status
+      "k" 'kill-buffer
+      "o" 'org-agenda
+      "q" 'kill-buffer-and-window
+      "r" 'helm-recentf
+      "s" 'helm-swoop
+      "w" 'other-window
+      "x" 'helm-M-x
+      "/" 'split-window-right
+      "-" 'split-window-below
+      "R" 'eval-buffer
+      "?" 'eww-search-words
+      ))
+  (evil-mode 1) 
   )
-
-(use-package evil-matchit
-  ;;press "%" to jump between tag pair
-  :config
-  (global-evil-matchit-mode 1))
-
-(use-package evil-leader
-  :config
-  ;; evil leader
-  (setq evil-leader/in-all-states 1)
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "SPC")
-  (evil-leader/set-key
-    "0" 'delete-window
-    "SPC" 'evil-buffer
-    ":" 'shell-command
-    "a" 'avy-goto-word-0
-    "b" 'helm-buffers-list
-    "d" 'kill-this-buffer
-    "f" 'helm-find-files
-    "g" 'magit-status
-    "k" 'kill-buffer
-    "q" 'kill-buffer-and-window
-    "r" 'helm-recentf
-    "s" 'helm-swoop
-    "w" 'other-window
-    "x" 'helm-M-x
-    "/" 'split-window-right
-    "-" 'split-window-below
-    "R" 'eval-buffer
-    ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; key-binding
@@ -94,9 +92,9 @@
 (define-key evil-normal-state-map "\C-y" 'yank)
 (define-key evil-insert-state-map "\C-y" 'yank)
 (define-key evil-visual-state-map "\C-y" 'yank)
-(define-key evil-normal-state-map "\C-k" 'kill-line)
-(define-key evil-insert-state-map "\C-k" 'kill-line)
-(define-key evil-visual-state-map "\C-k" 'kill-line)
+;(define-key evil-normal-state-map "\C-k" 'kill-line)
+;(define-key evil-insert-state-map "\C-k" 'kill-line)
+;(define-key evil-visual-state-map "\C-k" 'kill-line)
 (define-key evil-normal-state-map "\C-t" 'other-window)
 (define-key evil-insert-state-map "\C-t" 'other-window)
 (define-key evil-visual-state-map "\C-t" 'other-window)
